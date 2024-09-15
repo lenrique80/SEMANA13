@@ -1,0 +1,30 @@
+# calculo_temperaturas.py
+
+def calcular_temperatura_promedio(datos_temperaturas):
+    """
+    Calcula la temperatura promedio para cada ciudad durante el período dado.
+    
+    :param datos_temperaturas: Un diccionario donde las llaves son nombres de ciudades y 
+                               los valores son listas de temperaturas. 
+                               Ejemplo: {"Ciudad1": [20, 22, 21, 23], "Ciudad2": [25, 24, 23, 22]}
+    :return: Un diccionario con las temperaturas promedio de cada ciudad.
+             Ejemplo: {"Ciudad1": 21.5, "Ciudad2": 23.5}
+    """
+    promedios = {}
+    for ciudad, temperaturas in datos_temperaturas.items():
+        if len(temperaturas) == 0:
+            promedios[ciudad] = None  # No hay datos para calcular el promedio
+        else:
+            promedio = sum(temperaturas) / len(temperaturas)
+            promedios[ciudad] = promedio
+    return promedios
+
+if __name__ == "__main__":
+    # Datos de ejemplo
+    datos = {
+        "Quito": [8, 10, 9, 7],
+        "Cuenca": [12, 14, 13, 11],
+        "Pedernales": [30, 32, 31, 29]
+    }
+    resultados = calcular_temperatura_promedio(datos)
+    print(resultados)
